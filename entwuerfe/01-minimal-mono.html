@@ -55,6 +55,16 @@
       line-height: .9;
       letter-spacing: -.045em;
     }
+    /* Die „oo“ als verbundene Ringe (∞), gleiche Geometrie wie das Icon */
+    h1 .oo {
+      width: 1.05em;
+      height: .55em;
+      margin: 0 .01em 0 .02em;
+      vertical-align: -.012em;
+      overflow: visible;
+    }
+    h1 .oo circle { fill: none; stroke: currentColor; stroke-width: 2.8; }
+    h1 .oo .dot { fill: var(--accent); stroke: none; }
     p {
       margin: 0;
       font-size: clamp(18px, 2.4vw, 24px);
@@ -93,7 +103,7 @@
         <circle class="pupil" cx="22.7" cy="17" r="1.25"/>
       </g>
     </svg>
-    <h1>looboo</h1>
+    <h1 aria-label="looboo"><span aria-hidden="true">l<svg class="oo" viewBox="4.5 10 23 12"><circle cx="10.5" cy="16" r="4.5"/><circle cx="21.5" cy="16" r="4.5"/></svg>b<svg class="oo" viewBox="4.5 10 23 12"><circle cx="10.5" cy="16" r="4.5"/><circle cx="21.5" cy="16" r="4.5"/><circle class="dot" cx="22.7" cy="17" r="1.25"/></svg></span></h1>
     <p>Hier entsteht etwas Neues.</p>
   </main>
   <footer>© 2026 looboo.de</footer>

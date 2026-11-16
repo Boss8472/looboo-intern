@@ -47,6 +47,32 @@ def signet(size, *, rounded=True, safe=1.0, bg=INK, fg=PAPER):
     return img.resize((size, size), Image.LANCZOS)
 
 
+def wordmark(img, pos, font, size):
+    """Schreibt 'looboo', die 'oo' als verbundene Ringe wie in index.html."""
+    x, y = pos
+    d = ImageDraw.Draw(img)
+    baseline = y + font.getmetrics()[0]
+    u = size * 0.55 / 12          # 12 Einheiten Höhe = 0.55em
+    w_oo = 23 * u                 # viewBox-Breite 23
+    for i, part in enumerate(["l", "oo", "b", "oo"]):
+        if part != "oo":
+            d.text((x, y), part, font=font, fill=INK)
+            x += font.getlength(part) - 0.045 * size
+            continue
+        x += 0.02 * size
+        layer = Image.new("RGBA", (int(w_oo * SS) + SS, int(12 * u * SS) + SS), (0, 0, 0, 0))
+        ld = ImageDraw.Draw(layer)
+        k = u * SS
+        for cx in (6, 17):  # 10.5-4.5, 21.5-4.5
+            for rr, col in ((4.5 + 1.4, INK), (4.5 - 1.4, (0, 0, 0, 0))):
+                ld.ellipse([(cx - rr) * k, (6 - rr) * k, (cx + rr) * k, (6 + rr) * k], fill=col)
+        if i == 3:
+            ld.ellipse([(18.2 - 1.25) * k, (7 - 1.25) * k, (18.2 + 1.25) * k, (7 + 1.25) * k], fill=ACCENT)
+        layer = layer.resize((layer.width // SS, layer.height // SS), Image.LANCZOS)
+        img.paste(layer, (int(x), int(baseline + 0.012 * size - 12 * u)), layer)
+        x += w_oo + 0.01 * size - 0.045 * size
+
+
 def og_image():
     W, H = 1200, 630
     img = Image.new("RGB", (W, H), PAPER)
@@ -56,7 +82,7 @@ def og_image():
     small = ImageFont.truetype(font_path, 44, index=0)  # Regular
     icon = signet(140)
     img.paste(icon, (96, 96), icon)
-    d.text((90, 250), "looboo", font=big, fill=INK)
+    wordmark(img, (90, 250), big, 190)
     d.text((100, 480), "Hier entsteht etwas Neues.", font=small, fill=(90, 90, 90))
     d.rectangle([0, H - 14, W, H], fill=ACCENT)
     img.save(OUT / "og-image.png", optimize=True)
