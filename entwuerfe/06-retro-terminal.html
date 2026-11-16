@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entwurf 06 · Retro-Terminal – looboo</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../looboo/favicon.svg" type="image/svg+xml">
+  <style>
+    :root { --bg: #0a0f0a; --fg: #39ff6a; --dim: #1f8a3b; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; min-height: 100svh;
+      display: grid; place-items: center;
+      background: radial-gradient(ellipse at center, #0f1a10 0%, var(--bg) 75%);
+      color: var(--fg);
+      font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+      text-shadow: 0 0 4px rgba(57,255,106,.6);
+    }
+    body::after {
+      content: ""; position: fixed; inset: 0; pointer-events: none;
+      background: repeating-linear-gradient(transparent 0 2px, rgba(0,0,0,.25) 2px 4px);
+    }
+    .screen { width: min(100% - 32px, 760px); padding: 24px 0; font-size: clamp(14px, 2.2vw, 18px); line-height: 1.6; }
+    .dim { color: var(--dim); }
+    pre { margin: 16px 0; font-size: clamp(7px, 1.9vw, 16px); line-height: 1.1; overflow: hidden; }
+    .type { display: inline-block; overflow: hidden; white-space: nowrap; vertical-align: bottom; width: 0; animation: type 2.4s steps(26) 1s forwards; }
+    @keyframes type { to { width: 26ch; } }
+    .cursor { display: inline-block; width: .6em; height: 1.1em; background: var(--fg); vertical-align: text-bottom; animation: blink 1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } .type { width: auto; } }
+  </style>
+</head>
+<body>
+  <main class="screen">
+    <div class="dim">looboo.de login: gast<br>Letzter Login: heute</div>
+<pre aria-label="looboo">
+ _                 _
+| | ___   ___  ___| |__   ___   ___
+| |/ _ \ / _ \|___| '_ \ / _ \ / _ \
+| | (_) | (_) |   | |_) | (_) | (_) |
+|_|\___/ \___/    |_.__/ \___/ \___/
+</pre>
+    <div><span class="dim">gast@looboo:~$</span> cat status.txt</div>
+    <div><span class="type">Hier entsteht etwas Neues.</span></div>
+    <div><span class="dim">gast@looboo:~$</span> <span class="cursor"></span></div>
+    <p class="dim">© 2026 looboo.de</p>
+  </main>
+</body>
+</html>

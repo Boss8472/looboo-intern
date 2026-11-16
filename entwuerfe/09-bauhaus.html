@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entwurf 09 · Bauhaus – looboo</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../looboo/favicon.svg" type="image/svg+xml">
+  <style>
+    :root { --bg: #efe9dc; --ink: #1a1a1a; --red: #d7372b; --blue: #1f4fa3; --yellow: #f2b51d; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; min-height: 100svh;
+      display: grid; grid-template-rows: 1fr auto;
+      background: var(--bg); color: var(--ink);
+      font-family: Futura, "Century Gothic", "Avenir Next", system-ui, sans-serif;
+    }
+    main { display: grid; place-content: center; justify-items: center; gap: 28px; padding: 48px 16px; }
+    .comp { width: min(100%, 520px); aspect-ratio: 13 / 6; display: grid; grid-template-columns: repeat(13, 1fr); grid-template-rows: repeat(6, 1fr); }
+    .c1 { grid-area: 1 / 1 / 7 / 7; border-radius: 50%; border: clamp(14px, 4vw, 26px) solid var(--red); }
+    .c2 { grid-area: 1 / 7 / 7 / 13; border-radius: 50%; border: clamp(14px, 4vw, 26px) solid var(--blue); margin-left: -8%; }
+    .sq { grid-area: 4 / 11 / 7 / 14; background: var(--yellow); mix-blend-mode: multiply; }
+    .tri { grid-area: 1 / 5 / 3 / 9; background: var(--ink); clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+    h1 { margin: 0; font-size: clamp(56px, 14vw, 140px); font-weight: 700; letter-spacing: .06em; line-height: 1; text-transform: lowercase; }
+    p { margin: 0; font-size: clamp(16px, 2.4vw, 22px); letter-spacing: .12em; text-transform: uppercase; }
+    footer { display: grid; grid-template-columns: 1fr 1fr 1fr; height: 14px; }
+    footer span:nth-child(1) { background: var(--red); }
+    footer span:nth-child(2) { background: var(--yellow); }
+    footer span:nth-child(3) { background: var(--blue); }
+    .copy { text-align: center; font-size: 12px; letter-spacing: .2em; padding: 0 16px 16px; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="comp" aria-hidden="true"><div class="c1"></div><div class="c2"></div><div class="tri"></div><div class="sq"></div></div>
+    <h1>looboo</h1>
+    <p>Hier entsteht etwas Neues.</p>
+  </main>
+  <div>
+    <div class="copy">© 2026 LOOBOO.DE</div>
+    <footer aria-hidden="true"><span></span><span></span><span></span></footer>
+  </div>
+</body>
+</html>

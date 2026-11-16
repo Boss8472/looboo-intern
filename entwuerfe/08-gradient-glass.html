@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entwurf 08 · Gradient & Glas – looboo</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../looboo/favicon.svg" type="image/svg+xml">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; min-height: 100svh;
+      display: grid; place-items: center; padding: 16px;
+      color: #fff;
+      font-family: "SF Pro Display", -apple-system, "Segoe UI", system-ui, sans-serif;
+      background: #3a1c71;
+      background:
+        radial-gradient(at 15% 20%, #ff6a88 0, transparent 50%),
+        radial-gradient(at 85% 15%, #ffcc70 0, transparent 45%),
+        radial-gradient(at 80% 85%, #4158d0 0, transparent 55%),
+        radial-gradient(at 10% 90%, #00c9a7 0, transparent 50%),
+        #3a1c71;
+      background-size: 160% 160%;
+      animation: drift 18s ease-in-out infinite alternate;
+    }
+    @keyframes drift { to { background-position: 100% 100%; } }
+    .card {
+      width: min(100%, 560px); padding: clamp(32px, 6vw, 56px);
+      border-radius: 28px;
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.35);
+      box-shadow: 0 30px 80px rgba(20,0,60,.35), inset 0 1px 0 rgba(255,255,255,.4);
+      backdrop-filter: blur(22px) saturate(140%); -webkit-backdrop-filter: blur(22px) saturate(140%);
+      text-align: center;
+    }
+    .signet { width: 64px; height: 64px; margin: 0 auto 20px; display: block; }
+    h1 { margin: 0; font-size: clamp(56px, 13vw, 104px); font-weight: 700; letter-spacing: -.04em; line-height: 1; }
+    p { margin: 14px 0 0; font-size: clamp(17px, 2.4vw, 21px); opacity: .9; }
+    .bar { height: 6px; border-radius: 3px; margin: 32px auto 0; width: 70%; background: rgba(255,255,255,.25); overflow: hidden; }
+    .bar i { display: block; height: 100%; width: 40%; border-radius: 3px; background: #fff; animation: load 2.8s ease-in-out infinite; }
+    @keyframes load { 0% { transform: translateX(-100%); } 100% { transform: translateX(250%); } }
+    small { display: block; margin-top: 20px; font-size: 12px; opacity: .75; }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <svg class="signet" viewBox="0 0 32 32" aria-hidden="true">
+      <rect width="32" height="32" rx="9" fill="rgba(255,255,255,.9)"/>
+      <circle cx="10.5" cy="16" r="4.5" fill="none" stroke="#3a1c71" stroke-width="3"/>
+      <circle cx="21.5" cy="16" r="4.5" fill="none" stroke="#3a1c71" stroke-width="3"/>
+      <circle cx="22.7" cy="17" r="1.25" fill="#ff6a88"/>
+    </svg>
+    <h1>looboo</h1>
+    <p>Hier entsteht etwas Neues.</p>
+    <div class="bar" role="progressbar" aria-label="Im Aufbau"><i></i></div>
+    <small>© 2026 looboo.de</small>
+  </main>
+</body>
+</html>

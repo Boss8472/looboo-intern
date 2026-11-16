@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>looboo Entwürfe</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../looboo/favicon.svg" type="image/svg+xml">
+  <style>
+    :root { --bg: #f4f2ee; --card: #fff; --ink: #151515; --muted: #6b6760; --line: #e2ded6; }
+    @media (prefers-color-scheme: dark) { :root { --bg: #121212; --card: #1c1c1c; --ink: #f4f2ee; --muted: #a29d94; --line: #2c2c2c; } }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+    header { padding: 32px 16px 8px; max-width: 1280px; margin: 0 auto; }
+    h1 { margin: 0 0 4px; font-size: 28px; }
+    header p { margin: 0; color: var(--muted); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); gap: 20px; padding: 24px 16px 48px; max-width: 1280px; margin: 0 auto; }
+    a.card { display: block; text-decoration: none; color: inherit; background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; transition: transform .15s, box-shadow .15s; }
+    a.card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,.12); }
+    .frame { aspect-ratio: 16 / 10; overflow: hidden; position: relative; border-bottom: 1px solid var(--line); }
+    .frame iframe { width: 1280px; height: 800px; border: 0; transform: scale(var(--s, .28)); transform-origin: 0 0; pointer-events: none; }
+    .label { display: flex; justify-content: space-between; gap: 8px; padding: 12px 14px; font-size: 15px; }
+    .label span:first-child { font-weight: 600; }
+    .label span:last-child { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>looboo.de: 10 Entwürfe</h1>
+    <p>Zum Öffnen auf eine Karte klicken. Entwurf 01 ist aktuell live (looboo/index.html).</p>
+  </header>
+  <main class="grid" id="grid"></main>
+  <script>
+    var drafts = [
+      ['01-minimal-mono', 'Minimal Mono', 'Schwarz/Weiß, Signet, ruhig'],
+      ['02-pastell-blobs', 'Pastell-Blobs', 'verspielt, weich'],
+      ['03-dark-neon', 'Dark Neon', 'dunkel, Glow'],
+      ['04-brutalist', 'Brutalist', 'laut, Monospace'],
+      ['05-swiss-grid', 'Swiss Grid', 'Raster, roter Akzent'],
+      ['06-retro-terminal', 'Retro-Terminal', 'Phosphor-Grün'],
+      ['07-papier-editorial', 'Papier & Editorial', 'Serif, warm'],
+      ['08-gradient-glass', 'Gradient & Glas', 'Farbverlauf, Glaskarte'],
+      ['09-bauhaus', 'Bauhaus', 'Primärformen, Primärfarben'],
+      ['10-augen-maskottchen', 'Augen-Maskottchen', 'Augen folgen der Maus']
+    ];
+    var grid = document.getElementById('grid');
+    drafts.forEach(function (d, i) {
+      var a = document.createElement('a');
+      a.className = 'card'; a.href = d[0] + '.html';
+      a.innerHTML = '<div class="frame"><iframe loading="lazy" tabindex="-1" title="' + d[1] + '" src="' + d[0] + '.html"></iframe></div>' +
+        '<div class="label"><span>' + String(i + 1).padStart(2, '0') + ' · ' + d[1] + '</span><span>' + d[2] + '</span></div>';
+      grid.appendChild(a);
+    });
+    function fit() {
+      document.querySelectorAll('.frame').forEach(function (f) { f.style.setProperty('--s', f.clientWidth / 1280); });
+    }
+    addEventListener('resize', fit); fit();
+  </script>
+</body>
+</html>

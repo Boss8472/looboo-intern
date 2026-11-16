@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entwurf 03 · Dark Neon – looboo</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../looboo/favicon.svg" type="image/svg+xml">
+  <style>
+    :root { --bg: #07060d; --ink: #f4f1ff; --muted: #8f8aa8; --neon: #ff2fd0; --neon2: #29f0ff; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; min-height: 100svh;
+      display: grid; grid-template-rows: 1fr auto;
+      background:
+        radial-gradient(ellipse at 50% 120%, rgba(255,47,208,.22), transparent 60%),
+        linear-gradient(transparent 0 calc(100% - 1px), rgba(41,240,255,.07) 0) 0 0 / 100% 44px,
+        linear-gradient(90deg, transparent 0 calc(100% - 1px), rgba(41,240,255,.07) 0) 0 0 / 44px 100%,
+        var(--bg);
+      color: var(--ink);
+      font-family: "Avenir Next", Avenir, "Segoe UI", system-ui, sans-serif;
+    }
+    main { display: grid; place-content: center; text-align: center; padding: 48px 16px; }
+    h1 {
+      margin: 0; font-size: clamp(64px, 17vw, 190px); font-weight: 600; letter-spacing: .02em; line-height: 1;
+      color: #fff;
+      text-shadow: 0 0 6px #fff, 0 0 18px var(--neon), 0 0 42px var(--neon), 0 0 80px var(--neon);
+      animation: flicker 7s infinite;
+    }
+    h1 .oo { color: #fff; text-shadow: 0 0 6px #fff, 0 0 18px var(--neon2), 0 0 42px var(--neon2), 0 0 80px var(--neon2); }
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 80%, 100% { opacity: 1; }
+      20%, 22% { opacity: .55; }
+      81% { opacity: .8; }
+    }
+    p { margin: 24px 0 0; font-size: clamp(16px, 2.2vw, 20px); letter-spacing: .3em; text-transform: uppercase; color: var(--neon2); text-shadow: 0 0 10px rgba(41,240,255,.6); }
+    footer { padding: 20px 16px; text-align: center; font-size: 12px; letter-spacing: .15em; color: var(--muted); }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>l<span class="oo">oo</span>b<span class="oo">oo</span></h1>
+    <p>Hier entsteht etwas Neues</p>
+  </main>
+  <footer>© 2026 LOOBOO.DE</footer>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entwurf 02 · Pastell-Blobs – looboo</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../looboo/favicon.svg" type="image/svg+xml">
+  <style>
+    :root { --bg: #fff6ef; --ink: #2b2140; --muted: #6e6482; --a: #ffb3c7; --b: #b8e3ff; --c: #ffe39a; --d: #c9f2d4; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #1d1828; --ink: #fff6ef; --muted: #b9b0c9; --a: #8a3c5c; --b: #275b7e; --c: #7b6123; --d: #2d6a45; }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; min-height: 100svh;
+      display: grid; place-items: center; overflow: hidden;
+      background: var(--bg); color: var(--ink);
+      font-family: ui-rounded, "SF Pro Rounded", "Arial Rounded MT Bold", "Nunito", system-ui, sans-serif;
+    }
+    .blob { position: fixed; border-radius: 50%; filter: blur(30px); opacity: .85; animation: float 14s ease-in-out infinite; }
+    .b1 { width: 46vmax; height: 46vmax; background: var(--a); top: -14vmax; left: -12vmax; }
+    .b2 { width: 38vmax; height: 38vmax; background: var(--b); bottom: -12vmax; right: -10vmax; animation-delay: -4s; }
+    .b3 { width: 22vmax; height: 22vmax; background: var(--c); top: 12vh; right: 8vw; animation-delay: -8s; }
+    .b4 { width: 18vmax; height: 18vmax; background: var(--d); bottom: 10vh; left: 10vw; animation-delay: -11s; }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); border-radius: 50% 46% 54% 48%; }
+      33% { transform: translate(3vmax, -2vmax) scale(1.06); border-radius: 42% 58% 46% 54%; }
+      66% { transform: translate(-2vmax, 3vmax) scale(.95); border-radius: 56% 44% 52% 46%; }
+    }
+    main { position: relative; text-align: center; padding: 16px; }
+    h1 { margin: 0; font-size: clamp(64px, 17vw, 180px); font-weight: 800; letter-spacing: -.03em; line-height: 1; }
+    h1 span { display: inline-block; animation: bob 3s ease-in-out infinite; }
+    h1 span:nth-child(2) { animation-delay: .15s; }
+    h1 span:nth-child(3) { animation-delay: .3s; }
+    h1 span:nth-child(5) { animation-delay: .45s; }
+    h1 span:nth-child(6) { animation-delay: .6s; }
+    @keyframes bob { 50% { transform: translateY(-6%); } }
+    p { margin: 18px 0 0; font-size: clamp(18px, 2.6vw, 24px); color: var(--muted); }
+    .pill { display: inline-block; margin-top: 28px; padding: 10px 18px; border-radius: 999px; background: color-mix(in srgb, var(--bg) 70%, transparent); backdrop-filter: blur(8px); font-size: 14px; color: var(--muted); }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+</head>
+<body>
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div>
+  <main>
+    <h1 aria-label="looboo"><span>l</span><span>o</span><span>o</span><span>b</span><span>o</span><span>o</span></h1>
+    <p>Hier entsteht etwas Neues.</p>
+    <span class="pill">© 2026 looboo.de</span>
+  </main>
+</body>
+</html>

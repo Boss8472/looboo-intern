@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entwurf 10 · Augen-Maskottchen – looboo</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../looboo/favicon.svg" type="image/svg+xml">
+  <style>
+    :root { --bg: #ffd84d; --ink: #1b1b1b; --white: #fff; --muted: #4a4120; }
+    @media (prefers-color-scheme: dark) { :root { --bg: #1b1b1b; --ink: #ffd84d; --white: #fffaf0; --muted: #c9b56a; } }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; min-height: 100svh;
+      display: grid; grid-template-rows: 1fr auto;
+      background: var(--bg); color: var(--ink);
+      font-family: ui-rounded, "SF Pro Rounded", "Arial Rounded MT Bold", system-ui, sans-serif;
+    }
+    main { display: grid; place-content: center; justify-items: center; gap: 20px; padding: 48px 16px; text-align: center; }
+    .eyes { display: flex; gap: clamp(10px, 3vw, 24px); }
+    .eye {
+      width: clamp(110px, 30vw, 220px); aspect-ratio: 1; border-radius: 50%;
+      background: var(--white); border: clamp(8px, 2vw, 14px) solid #1b1b1b;
+      position: relative; overflow: hidden;
+      animation: blink 5s infinite;
+    }
+    .pupil {
+      position: absolute; width: 38%; aspect-ratio: 1; border-radius: 50%;
+      background: #1b1b1b; left: 31%; top: 31%;
+      transition: transform .08s linear;
+    }
+    .pupil::after { content: ""; position: absolute; width: 30%; aspect-ratio: 1; border-radius: 50%; background: #fff; top: 18%; left: 18%; }
+    @keyframes blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(.08); } }
+    h1 { margin: 0; font-size: clamp(56px, 14vw, 130px); font-weight: 800; letter-spacing: -.03em; line-height: 1; }
+    p { margin: 0; font-size: clamp(18px, 2.6vw, 24px); color: var(--muted); }
+    footer { padding: 20px 16px; text-align: center; font-size: 13px; color: var(--muted); }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyes" aria-hidden="true">
+      <div class="eye"><div class="pupil"></div></div>
+      <div class="eye"><div class="pupil"></div></div>
+    </div>
+    <h1>looboo</h1>
+    <p>Hier entsteht etwas Neues. Wir schauen schon mal.</p>
+  </main>
+  <footer>© 2026 looboo.de</footer>
+  <script>
+    (function () {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var pupils = document.querySelectorAll('.pupil');
+      function look(x, y) {
+        pupils.forEach(function (p) {
+          var eye = p.parentElement.getBoundingClientRect();
+          var cx = eye.left + eye.width / 2, cy = eye.top + eye.height / 2;
+          var a = Math.atan2(y - cy, x - cx);
+          var d = Math.min(eye.width * 0.2, Math.hypot(x - cx, y - cy) / 6);
+          p.style.transform = 'translate(' + Math.cos(a) * d + 'px,' + Math.sin(a) * d + 'px)';
+        });
+      }
+      addEventListener('pointermove', function (e) { look(e.clientX, e.clientY); });
+      addEventListener('deviceorientation', function (e) {
+        if (e.gamma == null) return;
+        look(innerWidth / 2 + e.gamma * 12, innerHeight / 2 + (e.beta - 45) * 12);
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entwurf 01 · Minimal Mono – looboo</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../looboo/favicon.svg" type="image/svg+xml">
+  <style>
+    :root {
+      --bg: #faf8f4;
+      --ink: #111;
+      --muted: #6b6760;
+      --line: #e4e0d8;
+      --accent: #ff5a36;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #111; --ink: #faf8f4; --muted: #a29d94; --line: #2a2a2a; }
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    main {
+      display: grid;
+      place-content: center;
+      justify-items: start;
+      gap: clamp(16px, 3vw, 28px);
+      padding: 48px 16px;
+      width: min(100%, 960px);
+      margin: 0 auto;
+    }
+    .signet { width: clamp(56px, 9vw, 84px); height: auto; color: var(--ink); }
+    .signet .bg { fill: var(--ink); }
+    .signet .ring { fill: none; stroke: var(--bg); stroke-width: 3; }
+    .signet .pupil { fill: var(--accent); }
+    .signet .lids { transform-origin: 16px 16px; animation: blink 6s infinite; }
+    @keyframes blink {
+      0%, 94%, 100% { transform: scaleY(1); }
+      97% { transform: scaleY(.1); }
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(64px, 18vw, 200px);
+      font-weight: 700;
+      line-height: .9;
+      letter-spacing: -.045em;
+    }
+    p {
+      margin: 0;
+      font-size: clamp(18px, 2.4vw, 24px);
+      color: var(--muted);
+    }
+    p::after {
+      content: "";
+      display: inline-block;
+      width: .5em; height: .5em;
+      margin-left: .4em;
+      border-radius: 50%;
+      background: var(--accent);
+      vertical-align: .1em;
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+    @keyframes pulse { 50% { opacity: .25; } }
+    footer {
+      padding: 20px 16px;
+      border-top: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+      text-align: center;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <svg class="signet" viewBox="0 0 32 32" role="img" aria-label="looboo Signet">
+      <rect class="bg" width="32" height="32" rx="7"/>
+      <g class="lids">
+        <circle class="ring" cx="10.5" cy="16" r="4.5"/>
+        <circle class="ring" cx="21.5" cy="16" r="4.5"/>
+        <circle class="pupil" cx="22.7" cy="17" r="1.25"/>
+      </g>
+    </svg>
+    <h1>looboo</h1>
+    <p>Hier entsteht etwas Neues.</p>
+  </main>
+  <footer>© 2026 looboo.de</footer>
+</body>
+</html>

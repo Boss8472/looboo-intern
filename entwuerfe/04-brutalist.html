@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entwurf 04 · Brutalist – looboo</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../looboo/favicon.svg" type="image/svg+xml">
+  <style>
+    :root { --bg: #e8ff3c; --ink: #000; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; min-height: 100svh;
+      display: grid; grid-template-rows: auto 1fr auto;
+      background: var(--bg); color: var(--ink);
+      font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+      border: 12px solid var(--ink);
+    }
+    header, footer { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 12px 16px; font-size: 14px; text-transform: uppercase; font-weight: 700; }
+    header { border-bottom: 4px solid var(--ink); }
+    footer { border-top: 4px solid var(--ink); }
+    main { display: grid; align-content: end; padding: 16px; overflow: hidden; }
+    h1 { margin: 0; font-size: clamp(72px, 22vw, 300px); line-height: .82; letter-spacing: -.06em; font-weight: 800; word-break: break-all; }
+    .bar { display: inline-block; margin: 24px 0 8px; padding: 8px 12px; background: var(--ink); color: var(--bg); font-size: clamp(16px, 2.6vw, 26px); font-weight: 700; text-transform: uppercase; box-shadow: 8px 8px 0 #ff3cac; }
+    .blink { animation: b 1s steps(1) infinite; }
+    @keyframes b { 50% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+</head>
+<body>
+  <header><span>looboo.de</span><span>Status: im Bau<span class="blink">_</span></span></header>
+  <main>
+    <h1>LOOBOO</h1>
+    <div><span class="bar">Hier entsteht etwas Neues.</span></div>
+  </main>
+  <footer><span>© 2026</span><span>Keine Cookies. Kein Tracking. Noch nichts.</span></footer>
+</body>
+</html>

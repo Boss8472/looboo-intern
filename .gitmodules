@@ -1,0 +1,3 @@
+[submodule "looboo"]
+	path = looboo
+	url = https://github.com/Boss8472/looboo.git
